@@ -21,6 +21,7 @@
     <a class="button button-style1" href="{{ route('admin') }}">Back</a>
 {{ Form::close() }}
 
+
 <h3>Preview Message</h3>
 
 {{ View::make('_message', compact('message')) }}

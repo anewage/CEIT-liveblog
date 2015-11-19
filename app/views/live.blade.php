@@ -3,7 +3,7 @@
 @section('content')
 
 <h1 class="live-blog-date">{{ date('F j, Y') }}</h1>
-<p class="timezone-notice">Timezone is CET</p>
+<p class="timezone-notice">Timezone is UTC +3:30 (Iran Standard Time)</p>
 
 <div id="live-blog">
     @if (count($messages))

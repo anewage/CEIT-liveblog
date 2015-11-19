@@ -1,3 +1,4 @@
+
 <div class="message">
     <div class="date">{{ $message->published_at->format('H:i') }}</div>
 

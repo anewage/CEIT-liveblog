@@ -16,16 +16,16 @@ return [
     /**
      * App id
      */
-    'app_id' => $_ENV['PUSHER_APP_ID'],
+    'app_id' => '154203',
 
     /**
      * App key
      */
-    'key' => $_ENV['PUSHER_KEY'],
+    'key' => '5e5a15889621b0bbd414',
 
     /**
      * App Secret
      */
-    'secret' => $_ENV['PUSHER_SECRET'],
+    'secret' => 'd63589b3aad6e74e736d',
 
 ];

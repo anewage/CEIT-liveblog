@@ -24,11 +24,31 @@ class AdminController extends BaseController
         $message = $this->savePicture($message);
 
         $message->save();
-
         $renderedMessage = View::make('_message', compact('message'))->render();
 
-        Pusherer::trigger('live_blog', 'blog_message', ['message' => $renderedMessage]);
+        Pusherer::trigger('test_channel', 'my_event', ['message' => $renderedMessage]);
 
+        return Redirect::route('admin');
+    }
+
+    public function submitPhoto() {
+        $dirName = 'files/'.Input::get('uploader');
+        echo $dirName;
+        if (Input::hasFile('photo')) {
+            // Get uploaded picture
+            $picture = Input::file('photo');
+
+            // Generate random filename
+            $filename = strtolower( $picture->getClientOriginalName());
+
+//            if( is_dir($dirName) === false )
+//            {
+//                mkdir($dirName);
+//            }
+
+            // Move picture to file folder
+            $picture->move(public_path($dirName), $filename);
+        }
         return Redirect::route('admin');
     }
 
@@ -76,13 +96,14 @@ class AdminController extends BaseController
 
     protected function savePicture(Message $message)
     {
+
         // Handle file upload.
         if (Input::hasFile('picture')) {
             // Get uploaded picture
             $picture = Input::file('picture');
 
             // Generate random filename
-            $filename = strtolower(Str::random(24) . '.' . $picture->getClientOriginalExtension());
+            $filename = strtolower( str_random(20) . '.' . $picture->getClientOriginalExtension());
 
             // Move picture to file folder
             $picture->move(public_path('files'), $filename);

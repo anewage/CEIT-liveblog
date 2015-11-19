@@ -2,9 +2,19 @@
 
 @section('content')
 
+    {{ Form::open(['route' => 'photo.submit', 'files' => true]) }}
+    {{ Form::text('uploader', null, ['id' => 'form-textarea', 'placeholder' => 'Uploader name']) }}
+    {{ Form::file('photo', ['class' => 'form-file']) }}
+    {{ Form::submit('Submit a photo', ['class' => 'button button-style2']) }}
+    {{ Form::close() }}
+
 <h1>Messages</h1>
 
 <a class="button button-style1" href="{{ route('message.create') }}">Create Message</a>
+
+
+
+
 
 @if (count($messages))
 <table class="messages-overview">
